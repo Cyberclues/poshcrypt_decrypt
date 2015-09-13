@@ -1,8 +1,8 @@
-param([string]$filename = $(Throw "Argument 'filename' required."))
+param([string]$filename = $(Throw "Argument 'filename' required."), [string]$origsalt = $(Throw "Argument 'origsalt' required.  Obtain from line 7 of encryption script.")
 [Reflection.Assembly]::LoadWithPartialName('System.Security')|Out-Null
 $PASSWORD = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("R2hjalJzaG5jckhoamp2aHRoamh2UnNqanZSaHNqanZ2cmhqc2RqY2o="));
 [byte[]]$var2=[system.Text.Encoding]::Unicode.GetBytes($PASSWORD)
-$SALT = [Text.Encoding]::UTF8.GetBytes("SgfmRRgxTgRgxhTghcHfgsjcO")
+$SALT = [Text.Encoding]::UTF8.GetBytes($origsalt)
 $RijndaelManaged_Var = new-Object System.Security.Cryptography.RijndaelManaged
 $RijndaelManaged_Var.Key = (new-Object Security.Cryptography.Rfc2898DeriveBytes $PASSWORD, $SALT, 5).GetBytes(32)
 $RijndaelManaged_Var.IV = (new-Object Security.Cryptography.SHA1Managed).ComputeHash([Text.Encoding]::UTF8.GetBytes("XlowQsiRsKORgfRjBMPLmCamEMyFRlWfsgTgh") )[0..15]
