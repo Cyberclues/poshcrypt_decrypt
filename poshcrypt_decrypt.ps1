@@ -1,4 +1,4 @@
-param([string]$filename = $(Throw "Argument 'filename' required."), [string]$origsalt = $(Throw "Argument 'origsalt' required.  Obtain from line 7 of encryption script.")
+param([string]$filename = $(Throw "Argument 'filename' required."), [string]$origsalt = $(Throw "Argument 'origsalt' required.  Obtain from line 7 of encryption script."))
 [Reflection.Assembly]::LoadWithPartialName('System.Security')|Out-Null
 $PASSWORD = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("R2hjalJzaG5jckhoamp2aHRoamh2UnNqanZSaHNqanZ2cmhqc2RqY2o="));
 [byte[]]$var2=[system.Text.Encoding]::Unicode.GetBytes($PASSWORD)
